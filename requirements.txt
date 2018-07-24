@@ -1,0 +1,14 @@
+beautifulsoup4
+numpy
+scipy
+matplotlib
+pandas
+statsmodels
+patsy
+numpydoc
+nose
+ipython
+ipykernel
+sphinx
+doc2dash
+sphinx_bootstrap_theme
