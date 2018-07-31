@@ -3,6 +3,11 @@
 git submodule init
 git submodule update
 python -m ipykernel install --name seaborn-dev
+
+pushd seaborn
+pip install -e .
+popd
+
 make -C seaborn/doc notebooks
 make -C seaborn/doc html
 
