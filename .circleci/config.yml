@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6
+      - image: circleci/python:3.6.6
     steps:
       - checkout
       - restore_cache:
@@ -24,6 +24,8 @@ jobs:
             - ~/venv
       - run:
           name: Create docset
-          command: ./run.sh
+          command: |
+            chown -R circleci /usr/local/share
+            ./run.sh
       - store_artifacts:
           path: Seaborn.tgz
