@@ -1,0 +1,29 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-py-cache-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - run:
+          name: Install dependencies
+          command: |
+            python -m venv ~/venv
+
+            echo ". ~/venv/bin/activate" >> $BASH_ENV
+            source $BASH_ENV
+
+            pip install -r requirements.txt
+      - save_cache:
+          name: Save python deps cache
+          key: v1-py-cache-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - ~/venv
+      - run:
+          name: Create docset
+          command: ./run.sh
+      - store_artifacts:
+          path: Seaborn.tgz
