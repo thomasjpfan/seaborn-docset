@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Create docset
           command: |
-            sudo mkdir -P /usr/local/share/jupyter
+            sudo mkdir -p /usr/local/share/jupyter
             sudo chown -R circleci /usr/local/share/jupyter
             ./run.sh
       - store_artifacts:
